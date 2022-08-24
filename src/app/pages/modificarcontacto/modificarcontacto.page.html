@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-item lines="none" color="success">
+      <ion-title color="light"><b>Modificar Contacto</b></ion-title>
+
+      <ion-button (click)="dismis()" fill="clear">
+        <ion-icon class="animate__animated animate__rotateIn" slot="icon-only" name="close-outline" color="danger">
+        </ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form class="animate__animated animate__zoomIn">
+    <ion-item>
+      <ion-label position="floating"><b>Nombre:</b></ion-label>
+      <ion-input type="text" placeholder="Ingrese el nombre del contacto" id="txtNombre" name="txtNombre"
+        [(ngModel)]="nombre">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"><b>Apellido:</b></ion-label>
+      <ion-input type="text" placeholder="Ingrese el apellido del contacto" id="txtApellido" name="txtApellido"
+        [(ngModel)]="apellido">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"><b>Correo:</b></ion-label>
+      <ion-input type="email" placeholder="Ingrese el correo" id="txtCorreo" name="txtCorreo"
+        [(ngModel)]="correo">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"><b>Celular:</b></ion-label>
+      <ion-input type="number" placeholder="Ingrese numero telefonico de celular" id="intCelular" name="intCelular"
+        [(ngModel)]="celular">
+      </ion-input>
+    </ion-item>
+    <br>
+
+    
+  </form>
+  <ion-button expand="block" shape="round" color="success" size="default" (click)="update()">
+    <ion-icon slot="start" name="reload-sharp" class="animate__animated animate__rotateIn"></ion-icon>
+    Actualizar
+  </ion-button>
+
+</ion-content>

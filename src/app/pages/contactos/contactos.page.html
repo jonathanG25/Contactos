@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-item lines="none" color="success">
+      <ion-icon slot="end" name="moon"></ion-icon>
+   <ion-toggle slot="end" [ngModel]="darkMode" (ionChange)="Cambio()" ></ion-toggle>
+      <ion-title color="light"><b>CONTACTOS</b></ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-toolbar color="light" *ngIf="contactos.length > 0">
+    <ion-searchbar (ionChange)="buscar($event)" placeholder="Buscar por nombre" color="light" animated>
+    </ion-searchbar>
+  </ion-toolbar>
+
+
+  <ion-list *ngIf="contactos.length > 0">
+    <ion-item-sliding *ngFor="let contacto of searchContacto; let indice = index"
+      class="animate__animated animate__lightSpeedInRight">
+
+      <ion-item-options side="start">
+        <ion-item-option color="blanco" (click)="whatsapp(contacto)"><ion-icon color="success" slot="icon-only" name="logo-whatsapp"></ion-icon></ion-item-option>
+        <ion-item-option color="blanco"(click)="llamar(contacto)"><ion-icon color="dark" slot="icon-only" name="call-outline"></ion-icon></ion-item-option>
+      </ion-item-options>
+    
+
+      <ion-item detail lines="full">
+    
+        <ion-label>
+          <ion-label><ion-icon slot="start" name="person" style="color: rgb(57, 57, 231)"></ion-icon> 
+          <strong> {{contacto.value.nombre}} {{contacto.value.apellido}}</strong></ion-label>
+          <p> <ion-icon slot="start" name="mail-outline" style="color: rgb(20, 60, 238)"></ion-icon><u> {{contacto.value.correo}}</u></p>
+          <p> <ion-icon slot="start" name="call-outline" style="color: rgb(10, 221, 56)"></ion-icon> 0{{contacto.value.celular}}</p>
+        </ion-label>
+
+        
+
+      </ion-item>
+      
+      <ion-item-options side="end">
+        <ion-item-option (click)="update(contacto)" color="blanco">
+          <ion-icon color="warning" slot="icon-only" name="create-outline"></ion-icon>
+        </ion-item-option>
+
+        <ion-item-option (click)="eliminar(contacto.key)" color="blanco">
+          <ion-icon color="danger" slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <br>
+  <ion-item *ngIf="!(contactos.length > 0)" lines="none">
+    <ion-label color="medium" class="ion-text-center animate__animated animate__tada">
+      <h1>
+        <b>No hay registros</b>
+      </h1>
+
+    </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addNewItem()" color="success">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
